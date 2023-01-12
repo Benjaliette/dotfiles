@@ -12,6 +12,10 @@ export HOMEBREW_NO_ANALYTICS=1
 # Disable warning about insecure completion-dependent directories
 ZSH_DISABLE_COMPFIX=true
 
+# Load pyenv (to manage your Python versions)
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && RPROMPT+='[🐍 $(pyenv_prompt_info)]'
+
 # Actually load Oh-My-Zsh
 source "${ZSH}/oh-my-zsh.sh"
 unalias rm # No interactive rm by default (brought by plugins/common-aliases)
@@ -20,9 +24,6 @@ unalias rm # No interactive rm by default (brought by plugins/common-aliases)
 export PATH="${HOME}/.rbenv/bin:${PATH}" # Needed for Linux/WSL
 type -a rbenv > /dev/null && eval "$(rbenv init -)"
 
-# Load pyenv (to manage your Python versions)
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && RPROMPT+='[🐍 $(pyenv_prompt_info)]'
 
 # Load nvm (to manage your node versions)
 export NVM_DIR="$HOME/.nvm"
@@ -69,3 +70,22 @@ export EDITOR=code
 
 # Set ipdb as the default Python debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
+
+# Aliases some command lines
+alias bd="./bin/dev"
+alias br="bin/rails"
+alias brc="bin/rails console"
+alias brg="bin/rails generate"
+alias brm="bin/rails db:migrate"
+
+mkcdir ()
+{
+    mkdir -p -- "$1" &&
+       cd -P -- "$1"
+}
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi

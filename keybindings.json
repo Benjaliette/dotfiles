@@ -9,5 +9,13 @@
     "key": "cmd+shift+v",
     "command": "pasteAndIndent.action",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+k cmd+m",
+    "command": "workbench.files.action.collapseExplorerFolders"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "search.action.collapseSearchResults"
   }
 ]
