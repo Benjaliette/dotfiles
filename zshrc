@@ -89,3 +89,8 @@ if [ -f '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zs
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi
+
+# plugin to show if in Python venv
+plugins=(virtualenv)
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
